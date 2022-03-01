@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql_root_password_for_this_challenge
+      ADMIN_PASSWORD: admin114514aAtq1_lMytQl1sTqqqqql^hsdooiha
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d/:ro
+
+  php:
+    build: ./app
+    restart: always
+    depends_on:
+      - mysql
+    ports:
+      - "10002:80"
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql_root_password_for_this_challenge

@@ -1,0 +1,2 @@
+# SUSCTF2022 web challenge
+感谢EVat0m师傅贡献fxxkcors和HTML\_practice两题

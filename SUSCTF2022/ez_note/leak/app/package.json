@@ -1,0 +1,13 @@
+{
+  "name": "xs_leak",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongoose": "^6.2.1"
+  },
+  "devDependencies": {
+    "cookie-parser": "^1.4.6",
+    "express-session": "^1.17.2",
+    "ejs": "^3.1.6"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "z33/obfuscator",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "z33",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "nikic/php-parser": "^4.0"
+  }
+}

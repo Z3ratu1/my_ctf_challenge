@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%# 前端稍微写好看点 %>
+    <title>Admin report</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+            crossorigin="anonymous"></script>
+    <%# 试一下国内镜像 %>
+    <script src="https://www.recaptcha.net/recaptcha/api.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col">
+                <h2 class="display-3"><%= name %></h2>
+            </div>
+        </div>
+        <p class="lead">If you found any bugs, report it to me</p>
+    </div>
+</div>
+<div class="container">
+    <hr class="my-4">
+    <% if(typeof message !== "undefined"){ %>
+    <p class="lead"><%= message %></p>
+    <hr class="my-4">
+    <% } %>
+    <form id='form' action="/<%= router %>" method="POST">
+        <div class="form-group">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon"><%= site %></span>
+                </div>
+                <input type="text" name="url" class="form-control" placeholder="/view/title" id="url"
+                       aria-describedby="basic-addon">
+                <input type="hidden" name="g-recaptcha-response" id="recaptcha_code">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    grecaptcha.ready(function () {
+        grecaptcha.render({
+            sitekey: '6Lc12WUeAAAAAPRMKoUNxjnL0b7V_xdm-C1jPbry',
+            callback: function (token) {
+                recaptcha_code.value = token
+                form.submit()
+            }
+        })
+    })
+    form.addEventListener('submit', function (evt) {
+        evt.preventDefault()
+        grecaptcha.execute()
+    })
+</script>
+</body>
+</html>
